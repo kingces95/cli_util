@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source /dev/stdin < <(cli loader)
+source /dev/stdin < <(cli loader --library)
 
 help() {
     cat << EOF
@@ -11,29 +11,12 @@ Global Arguments
 EOF
 }
 
-main() { cli::export util; }
-test() { return; }
-
 # loader reflection
 util::this_dir() { echo $(dirname ${BASH_SOURCE[1]}); }
 util::this_file() { echo "${BASH_SOURCE[1]}"; }
 util::this_function() { echo "${FUNCNAME[1]}"; }
 util::caller_file() { echo "${BASH_SOURCE[2]}"; }
 util::caller_dir() { echo $(dirname ${BASH_SOURCE[2]}); }
-
-# basic initialize
-util::initialize() {
-    while (( $# > 0 )); do
-        case $1 in
-            '-h') arg_help=true ;;
-            '--help') arg_help=true ;;
-            '--self-test') arg_self_test=true ;;
-            *) echo "Unexpected argument $1."; exit 1 ;;
-        esac
-
-        shift
-    done
-}
 
 # error
 util::on_exit() {
@@ -125,8 +108,12 @@ util::yield_args() (
     done
 )
 
-initialize() {
-    util::initialize "$@"
+main() {
+    cli::export util; 
+}
+
+self_test() { 
+    return; 
 }
 
 cli::load "$@"
