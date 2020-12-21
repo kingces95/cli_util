@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-source /dev/stdin < <(cli loader)
-cli::import cli initialize
-cli::import cli export
+source $(cli loader)
 
 help() {
     cat << EOF
@@ -13,7 +11,7 @@ Global Arguments
 EOF
 }
 
-main() {
+export() {
 
     # loader reflection
     util::this_dir() { echo $(dirname ${BASH_SOURCE[1]}); }
