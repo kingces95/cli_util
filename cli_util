@@ -4,7 +4,7 @@ source $(cli loader)
 help() {
     cat << EOF
 Command
-    cli_util
+    ${CLI_PATH}
 
 Global Arguments
     --help -h               : Show this message and exit.
