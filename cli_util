@@ -50,7 +50,6 @@ export() {
         done 2>&1
     )
     util::log_callstack() {
-        echo CALLSTACK: 
         util::callstack \
             | util::indent
     }
