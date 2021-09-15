@@ -1,10 +1,9 @@
-#!/usr/bin/env bash
-source $(cli loader ---exports)
+#!/usr/bin/env bash-cli
 
 help() {
     cat << EOF
 Command
-    ${CLI_COMMAND}
+    ${CLI_COMMAND[@]}
 
 Global Arguments
     --help -h               : Show this message and exit.
@@ -120,5 +119,3 @@ main() {
 self_test() { 
     return; 
 }
-
-cli::main "$@"
