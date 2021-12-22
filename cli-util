@@ -10,10 +10,6 @@ Global Arguments
 EOF
 }
 
-cli::meta::declare() {
-    :
-}
-
 main() {
 
     # loader reflection
